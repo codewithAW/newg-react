@@ -1,0 +1,47 @@
+.text-type {
+  display: inline-block;
+  white-space: pre-wrap;
+  /* Use transform for visual offset so layout (image) isn't affected */
+  transform: translateX(clamp(-820px, -6vw, 0px));
+  will-change: transform;
+
+  /* Responsive font-size (min, preferred, max) */
+  font-size: clamp(1rem, 1.6vw + 2.5rem, 2.6rem);
+  font-weight: 500;
+  margin-bottom: 100px;
+}
+
+@media (max-width: 768px) {
+  .text-type {
+    display: block;
+    transform: none; /* don't offset on small screens */
+    margin: 0.2rem 1rem 0.8rem 1rem;
+    font-family: 'DM Sans', 'Inter', system-ui, -apple-system;
+    font-size: clamp(0.85rem, 3.6vw, 1rem);
+    font-weight: 500;
+    text-align: center;
+    letter-spacing: 0.01em;
+    color: var(--text-muted);
+  }
+}
+
+@media (max-width: 420px) {
+  .text-type {
+    font-size: clamp(0.78rem, 4.8vw, 0.95rem);
+    margin-bottom: 0.6rem;
+  }
+}
+
+.text-type__content {
+  display: inline-block;
+}
+
+.text-type__cursor {
+  margin-left: 0.25rem;
+  display: inline-block;
+  opacity: 1;
+}
+
+.text-type__cursor--hidden {
+  display: none;
+}

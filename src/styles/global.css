@@ -1,0 +1,177 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,100..1000&display=swap');
+@import url('https://unpkg.com/normalize.css') layer(normalize);
+
+@layer normalize, base, demo, toggle, transitions, debug, responsive;
+
+/* Global Box Sizing Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* ============================= */
+/* BACKGROUND IMAGE CONTROLLER   */
+/* ============================= */
+
+:root {
+  --bg-day: url("../assets/images/day.png");
+  --bg-night: url("../assets/images/dark.png");
+
+  /* DEFAULT = DAY */
+  --bg-image: var(--bg-day);
+
+  --text-day: #0f172a; /* pure black for day */
+  --text-night: #ffffff; /* pure white for night */
+
+  --card-day:#0f172a;
+  --card-night: rgba(20,20,30,0.55);
+
+  /* Muted/secondary text that adapts to theme */
+  --text-muted-day: rgba(224, 177, 177, 0.75);
+  --text-muted-night: rgba(255, 255, 255, 0.85);
+  --text-muted: var(--text-muted-day);
+
+  /* Glass button and header sizing */
+  --glass-button-height: 80px;
+  --glass-button-vertical-padding: 0px;
+  --header-height: calc(var(--glass-button-height) + (var(--glass-button-vertical-padding) * 2));
+
+  --text-color: var(--text-day);
+}
+
+html, body {
+  overflow-x: hidden;
+}
+
+body {
+  position: relative;
+  background: transparent;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text-color);
+  transition: color 0.2s ease;
+  padding-top: var(--header-height);
+}
+
+/* Background layer for smooth animation */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: var(--bg-image);
+  background-size: cover;
+  background-position: center;
+  opacity: var(--bg-opacity, 1);
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+[data-theme="dark"] {
+  --text-color: var(--text-night);
+  --text-muted: var(--text-muted-night);
+  --card-bg: rgba(20, 20, 30, 0.55);
+}
+
+.main-content p {
+  transition: color 0.3s ease;
+}
+
+.card {
+  background: var(--card-day);
+  transition: background 0.3s ease;
+}
+
+[data-theme="dark"] .card {
+  background: var(--card-bg);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+/* ============================= */
+/* MAIN CONTENT STYLES           */
+/* ============================= */
+
+.main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.main-content h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.main-content p {
+  font-size: 1.35rem;
+  color: var(--text-color);
+  line-height: 1.8;
+}
+
+/* ============================= */
+/* RESPONSIVE DESIGN             */
+/* ============================= */
+
+@layer responsive {
+  /* Dark mode text color adjustments */
+  [data-theme="dark"] {
+    --text-color: var(--text-night);
+  }
+
+  [data-theme="light"] {
+    --text-color: var(--text-day);
+    --text-muted: var(--text-muted-day);
+  }
+
+  [data-theme="dark"] .main-content p {
+    color: var(--text-color);
+  }
+
+  @media (max-width: 1024px) {
+    .main-content h1 {
+      font-size: 2.5rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    /* Reduce glass button & header size on small screens */
+    :root { --glass-button-height: 50px; --glass-button-vertical-padding: 16px; }
+
+    .main-content {
+      padding: 30px 15px;
+    }
+
+    .main-content h1 {
+      font-size: 2rem;
+    }
+
+    .main-content p {
+      font-size: 1.15rem;
+      line-height: 1.7;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .main-content {
+      padding: 20px 15px;
+    }
+
+    .main-content h1 {
+      font-size: 1.5rem;
+    }
+
+    .main-content p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+  }
+}

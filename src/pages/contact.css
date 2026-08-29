@@ -1,0 +1,221 @@
+/* Contact Page Styles */
+.contact-container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.contact-header {
+  text-align: center;
+  margin-bottom: 50px;
+  animation: fadeInDown 0.8s ease-out;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.contact-header h1 {
+  font-size: 42px;
+  color: var(--text-color, #ffffff);
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.contact-subtitle {
+  font-size: 18px;
+  color: var(--text-muted, rgba(255, 255, 255, 0.7));
+  font-weight: 400;
+  transform: none !important;
+  margin-bottom: 0 !important;
+  text-align: center;
+  display: block;
+}
+
+/* Contact Cards */
+.contact-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.contact-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 40px 30px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeInUp 0.8s ease-out both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.contact-card:nth-child(1) { animation-delay: 0.1s; }
+.contact-card:nth-child(2) { animation-delay: 0.2s; }
+.contact-card:nth-child(3) { animation-delay: 0.3s; }
+
+.contact-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.icon-wrapper {
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, rgba(0, 255, 136, 0.15) 0%, rgba(0, 153, 255, 0.15) 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.contact-card:hover .icon-wrapper {
+  transform: scale(1.1);
+}
+
+.contact-icon {
+  font-size: 28px;
+  color: #00ff88;
+}
+
+.contact-card:nth-child(2) .contact-icon {
+  color: #0099ff;
+}
+
+.contact-card:nth-child(3) .contact-icon {
+  color: #ff3366;
+}
+
+.contact-card h3 {
+  font-size: 22px;
+  color: var(--text-color, #ffffff);
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.contact-card p {
+  font-size: 16px;
+  color: var(--text-muted, rgba(255, 255, 255, 0.7));
+  word-break: break-word;
+  margin: 0;
+}
+
+/* Light mode overrides */
+[data-theme="light"] .contact-subtitle {
+  color: rgba(15, 23, 42, 0.86) !important;
+}
+
+[data-theme="light"] .contact-card {
+  border-color: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.03);
+}
+
+[data-theme="light"] .contact-card:hover {
+  background: rgba(0, 0, 0, 0.05);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="light"] .icon-wrapper {
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .contact-container {
+    padding: 30px 15px;
+  }
+
+  .contact-header {
+    margin-bottom: 40px;
+  }
+
+  .contact-header h1 {
+    font-size: 32px;
+    margin-bottom: 12px;
+  }
+
+  .contact-subtitle {
+    font-size: 16px;
+  }
+
+  .contact-card {
+    padding: 30px 20px;
+  }
+
+  .icon-wrapper {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 20px;
+  }
+
+  .contact-icon {
+    font-size: 24px;
+  }
+
+  .contact-card h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .contact-card p {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-container {
+    padding: 20px 12px;
+  }
+
+  .contact-header {
+    margin-bottom: 30px;
+  }
+
+  .contact-header h1 {
+    font-size: 26px;
+    margin-bottom: 10px;
+  }
+
+  .contact-subtitle {
+    font-size: 14px;
+  }
+
+  .contact-cards {
+    gap: 20px;
+  }
+
+  .contact-card {
+    padding: 25px 15px;
+    border-radius: 16px;
+  }
+}
