@@ -27,8 +27,8 @@ function Home() {
     (async () => {
       try {
         const [{ Draggable }, { default: ScrollTrigger }] = await Promise.all([
-          import('gsap/draggable'),
-          import('gsap/scrolltrigger')
+          import('gsap/Draggable'),
+          import('gsap/ScrollTrigger')
         ]);
 
         try {

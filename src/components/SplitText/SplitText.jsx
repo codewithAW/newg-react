@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { gsap } from 'gsap';
-import ScrollTrigger from 'gsap/scrolltrigger';
-import GSAPSplitText from 'gsap/splittext';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+import GSAPSplitText from 'gsap/SplitText';
 import './split.css'
 
 // Register plugins defensively — if the plugins aren't available the code will fall back to animating immediately
