@@ -1,1 +1,40 @@
 /* Theme toggle styles are in toggle.css */
+
+.mobile-icon-toggle {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .liquid-toggle {
+    display: none !important;
+  }
+
+  .mobile-icon-toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--text-color, #fff);
+    font-size: 1.2rem;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .mobile-icon-toggle:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+  }
+
+  [data-theme="light"] .mobile-icon-toggle {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.1);
+    color: #111827;
+  }
+}

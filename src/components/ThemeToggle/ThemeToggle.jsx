@@ -3,6 +3,7 @@ import { useTheme } from '../../hooks/useTheme'
 import './ThemeToggle.css'
 import gsap from 'gsap'
 import '../../styles/toggle.css'
+import { FaSun, FaMoon } from 'react-icons/fa'
 
 function ThemeToggle() {
   const { isDark, toggleTheme } = useTheme()
@@ -116,6 +117,13 @@ function ThemeToggle() {
           </div>
           <div className="cover"></div>
         </div>
+      </button>
+      <button
+        className="mobile-icon-toggle"
+        onClick={handleClick}
+        aria-label="toggle theme"
+      >
+        {isDark ? <FaMoon className="theme-icon moon" /> : <FaSun className="theme-icon sun" />}
       </button>
     </div>
   )

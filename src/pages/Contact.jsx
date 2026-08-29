@@ -24,13 +24,15 @@ function Contact() {
         try { gsap.registerPlugin(Draggable, ScrollTrigger); } catch (e) {}
 
         if (Draggable && typeof Draggable.create === 'function') {
-          draggable = Draggable.create(el, {
-            type: 'x,y',
-            inertia: true,
-            onRelease: function () {
-              gsap.to(this.target, { x: 0, y: 0, duration: 1.5, ease: 'elastic.out(1,0.3)' });
-            }
-          });
+          if (window.innerWidth > 768) {
+            draggable = Draggable.create(el, {
+              type: 'x,y',
+              inertia: true,
+              onRelease: function () {
+                gsap.to(this.target, { x: 0, y: 0, duration: 1.5, ease: 'elastic.out(1,0.3)' });
+              }
+            });
+          }
         }
       } catch (err) {
         console.warn('Draggable/ScrollTrigger plugins not available', err);

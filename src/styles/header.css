@@ -498,6 +498,7 @@
 
   .switcher-container {
     padding: 10px 0;
+    position: absolute;
   }
 
   .glass-button {

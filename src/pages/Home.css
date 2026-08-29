@@ -111,11 +111,6 @@
     top: auto;
   }
 
-  /* Hide profile card on mobile in favor of TechOrb3D */
-  .image-col > .image,
-  .image-col > .image.pc-card-wrapper {
-    display: none !important;
-  }
 
   .image .pc-card {
     height: auto;

@@ -8,7 +8,6 @@ import TextType from '../components/TextType/TextType'
 import './Home.css'
 import image from '../assets/images/ing.webp'
 import ProfileCard from '../components/ProfileCard/ProfileCard'
-import TechOrb3D from '../components/TechOrb3D/TechOrb3D'
 import { Link } from 'react-router-dom'  
 
 function Home() {
@@ -38,13 +37,15 @@ function Home() {
         }
 
         if (Draggable && typeof Draggable.create === 'function') {
-          draggable = Draggable.create(el, {
-            type: 'x,y',
-            inertia: true,
-            onRelease: function () {
-              gsap.to(this.target, { x: 0, y: 0, duration: 1.5, ease: 'elastic.out(1,0.3)' });
-            }
-          });
+          if (window.innerWidth > 768) {
+            draggable = Draggable.create(el, {
+              type: 'x,y',
+              inertia: true,
+              onRelease: function () {
+                gsap.to(this.target, { x: 0, y: 0, duration: 1.5, ease: 'elastic.out(1,0.3)' });
+              }
+            });
+          }
         }
       } catch (err) {
         // Plugin(s) not available; keep app running without draggable
@@ -126,7 +127,6 @@ function Home() {
         />
       </div>
       </div>
-      <TechOrb3D />
 <div className="professional-text liquid-glass is-expanded" aria-expanded="true">
   <div className="liquid-glass--bend" />
   <div className="liquid-glass--face" />
