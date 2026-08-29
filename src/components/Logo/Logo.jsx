@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { NavIcons } from '../../utils/icons'
 import './Logo.css'
-import logoImg from "../../assets/images/img.png";
+import logoImg from "../../assets/images/logo.webp";
 function Logo() {
   const [showPopup, setShowPopup] = useState(false)
 

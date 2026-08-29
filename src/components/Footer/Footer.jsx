@@ -34,7 +34,7 @@ function Footer() {
           <h4 className="footer-section-title">Connect</h4>
           <div className="social-icons">
             <a
-              href="https://facebook.com"
+              href="https://web.facebook.com/profile.php?id=61593986908807"
               target="_blank"
               rel="noopener noreferrer"
               className="social-icon"
@@ -44,7 +44,7 @@ function Footer() {
               <FaFacebook />
             </a>
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/codewithaw/"
               target="_blank"
               rel="noopener noreferrer"
               className="social-icon"
@@ -54,7 +54,7 @@ function Footer() {
               <FaInstagram />
             </a>
             <a
-              href="https://youtube.com"
+              href="https://www.youtube.com/@CodeWithAbdulWaheed"
               target="_blank"
               rel="noopener noreferrer"
               className="social-icon"
@@ -64,7 +64,7 @@ function Footer() {
               <FaYoutube />
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/abdul-waheed-1ba53542a?utm_source=share_via&utm_content=profile&utm_medium=member_android"
               target="_blank"
               rel="noopener noreferrer"
               className="social-icon"
@@ -84,7 +84,7 @@ function Footer() {
               <FaTwitter />
             </a>
             <a
-              href="https://github.com"
+              href="https://github.com/codewithAW"
               target="_blank"
               rel="noopener noreferrer"
               className="social-icon"

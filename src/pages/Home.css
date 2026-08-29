@@ -111,12 +111,10 @@
     top: auto;
   }
 
-  /* Ensure profile card scales and doesn't overlap */
-  .image,
-  .image.pc-card-wrapper {
-    width: 82%;
-    max-width: 340px;
-    margin: 0.6rem auto 0;
+  /* Hide profile card on mobile in favor of TechOrb3D */
+  .image-col > .image,
+  .image-col > .image.pc-card-wrapper {
+    display: none !important;
   }
 
   .image .pc-card {
@@ -178,7 +176,116 @@
   gap: 20px;
   width: 100%;
   max-width: 1200px;
-  margin-top: 1rem;
+  margin-top: 2rem;
+}
+
+/* Marquee Styles */
+.marquee-container {
+  width: 100%;
+  max-width: 1200px;
+  position: relative;
+  overflow: hidden;
+  padding: 3rem 0;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 24px;
+  margin-top: 6rem;
+  margin-bottom: 4rem;
+  backdrop-filter: blur(5px);
+}
+[data-theme="light"] .marquee-container {
+  background: rgba(0,0,0,0.02);
+  border-color: rgba(0,0,0,0.05);
+}
+.marquee-content {
+  display: flex;
+  width: max-content;
+  animation: scroll 30s linear infinite;
+  gap: 4rem;
+}
+.marquee-item {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--glass-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+.marquee-item:hover {
+  opacity: 1;
+}
+.marquee-item svg {
+  color: #6366f1;
+  font-size: 2rem;
+}
+@keyframes scroll {
+  to {
+    transform: translateX(calc(-50% - 2rem));
+  }
+}
+
+/* Testimonials Styles */
+.testimonials-section {
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+  padding: 0 1rem;
+}
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  color: var(--glass-text);
+  margin-bottom: 3rem;
+  font-weight: 700;
+}
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 2rem;
+}
+.testimonial-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+[data-theme="light"] .testimonial-card {
+  background: rgba(0,0,0,0.02);
+  border-color: rgba(0,0,0,0.05);
+}
+.testimonial-text {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--glass-text-muted);
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.author-info h4 {
+  margin: 0;
+  color: var(--glass-text);
+  font-size: 1.1rem;
+}
+.author-info span {
+  color: #6366f1;
+  font-size: 0.9rem;
+  font-weight: 600;
 } 
 
 /* Ensure text column doesn't get pushed by visual transforms */
@@ -212,200 +319,98 @@
   }
 }
 
-/* Professional text block styles + Liquid Glass */
-.professional-text.liquid-glass {
-  --glass-size-w: 270px;
-  --glass-size-h: 270px;
-  --glass-padding: 30px;
-  --border-radius: 32px;
-  --transition: 0.4s cubic-bezier(0.5, 1.5, 0.5, 1);
-
-  /* Use stronger, dark text on top of light/white backgrounds for legibility */
-  --glass-text: #111827; /* gray-900 */
-  --glass-text-muted: #061222; /* gray-600 */
-
-  max-width: none;
-  margin: 2.25rem auto;
-  padding: var(--glass-padding);
-  border-radius: var(--border-radius);
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  border: 1px solid rgba(255,255,255,0.04);
-  box-shadow: 0 10px 30px rgba(2,6,23,0.12);
+/* Timeline Styles for About & Experience */
+.timeline-title {
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.6rem;
+  font-weight: 700;
   color: var(--glass-text);
-font-weight: 500;
-  width: var(--glass-size-w);
-  height: var(--glass-size-h);
-  position: relative;
-  cursor: grab;
-  transition: width var(--transition), height var(--transition), padding var(--transition);
-  overflow: hidden;
-  /* Keep the glass below the header while scrolling */
-  z-index: 0;
-} 
-
-.professional-text.liquid-glass.is-expanded {
-  --glass-size-w: 820px; /* increased further for desktop */
-  --glass-size-h: 820px;
-  --glass-padding: 48px;
-  box-shadow: 0 20px 70px rgba(2,6,23,0.18);
-  /* Let the glass grow with content instead of forcing internal scroll */
-  min-height: var(--glass-size-h);
-  height: auto;
-  top: auto;
-  z-index: 0;
 }
-
-/* Subtle entrance animations for the content */
-@keyframes fadeUpSmall {
-  from { opacity: 0; transform: translateY(8px) scale(.995); }
-  to   { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-@keyframes glassBend {
-  from { transform: translateY(6px); opacity: .9; }
-  to { transform: translateY(0); opacity: 1; }
-}
-
-.professional-text.liquid-glass.is-expanded .liquid-glass--bend {
-  animation: glassBend 700ms cubic-bezier(.22,.9,.3,1) both;
-}
-
-.liquid-glass__content > * {
-  opacity: 0;
-  transform: translateY(8px) scale(.995);
-  animation: fadeUpSmall 520ms cubic-bezier(.22,.9,.3,1) both;
-}
-
-.liquid-glass__content > *:nth-child(1) { animation-delay: 40ms; }
-.liquid-glass__content > *:nth-child(2) { animation-delay: 120ms; }
-.liquid-glass__content > *:nth-child(3) { animation-delay: 200ms; }
-.liquid-glass__content > *:nth-child(4) { animation-delay: 280ms; }
-.liquid-glass__content > *:nth-child(5) { animation-delay: 360ms; }
-.liquid-glass__content > *:nth-child(6) { animation-delay: 440ms; }
-
-/* Skill chips */
-.glass-skills {
-  list-style: none;
-  padding: 0;
-  margin: 0.5rem 0 0 0;
-  display: flex;
-  gap: 0.6rem;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-.glass-skills li { display: flex; gap: 0.5rem; align-items: center; font-size: 1.1rem; color: var(--text-muted); }
-.glass-skills li span { background: rgba(255,255,255,0.03); padding: 0.35rem 0.75rem; border-radius: 10px; border: 1px solid rgba(255,255,255,0.04); color: var(--text-color); font-weight: 600; font-size: 1.05rem; }
-
-@media (prefers-reduced-motion: reduce) {
-  .liquid-glass__content > * { animation: none !important; transform: none !important; opacity: 1 !important; }
-} 
-
-.liquid-glass--bend {
-  backdrop-filter: blur(3px);
-  border-radius: var(--border-radius);
-  filter: url(#glass-blur);
-  inset: 0;
-  position: absolute;
-  z-index: 0;
-}
-
-.liquid-glass--face {
-  border-radius: var(--border-radius);
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.15), 0 0 12px rgba(0, 0, 0, 0.08);
-  inset: 0;
-  position: absolute;
-  z-index: 1;
-}
-
-.liquid-glass--edge {
-  border-radius: var(--border-radius);
-  box-shadow: inset 3px 3px 3px 0 rgba(255, 255, 255, 0.45), inset -3px -3px 3px 0 rgba(255, 255, 255, 0.45);
-  inset: 0;
-  position: absolute;
-  z-index: 2;
-}
-
-.liquid-glass__content {
-  position: relative;
-  z-index: 3;
-  height: auto;
-  overflow: visible;
+.timeline-container {
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 1.5rem;
+  position: relative;
+  padding-left: 1.5rem;
+  border-left: 2px solid rgba(255, 255, 255, 0.1);
 }
-
-.professional-text.liquid-glass .highlight {
-  background: linear-gradient(90deg, rgba(255,230,128,0.08), rgba(125,190,255,0.06));
-  padding: 0.08rem 0.35rem;
-  border-radius: 6px;
-  color: var(--text-color);
-  font-weight: 600;
+[data-theme="light"] .timeline-container {
+  border-left: 2px solid rgba(0, 0, 0, 0.1);
 }
-
-/* Theme-aware text colors for the liquid glass content 🔧 */
-/* Day mode uses darker text; Dark mode uses lighter text for legibility */
-[data-theme="light"] .professional-text.liquid-glass {
-  /* Use a stronger, near-black text color for day mode */
-  --glass-text: var(--text-day);
-  /* Keep muted text readable in day mode (dark gray with decent contrast) */
-  --glass-text-muted: rgba(15, 23, 42, 0.86); /* dark slate */
+.timeline-item {
+  position: relative;
 }
-
-[data-theme="dark"] .professional-text.liquid-glass {
-  --glass-text: var(--text-night);
-  --glass-text-muted: var(--text-muted-night);
+.timeline-dot {
+  position: absolute;
+  left: -1.5rem;
+  top: 0.3rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #6366f1;
+  transform: translateX(-50%);
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
 }
-
-/* Ensure the content explicitly inherits the glass text color and transitions smoothly */
-.professional-text.liquid-glass .liquid-glass__content {
-  color: var(--glass-text);
-  transition: color 220ms ease;
+[data-theme="light"] .timeline-dot {
+  border-color: rgba(255,255,255, 1);
 }
-
-/* Make headings and paragraphs explicitly honor the glass text colors */
-.professional-text.liquid-glass h2,
-.professional-text.liquid-glass p {
-  color: var(--glass-text);
-}
-
-
-/* Make skill chips match the glass text color (keeps visual consistency) */
-.glass-skills li span { background: rgba(255,255,255,0.03); padding: 0.35rem 0.75rem; border-radius: 10px; border: 1px solid rgba(255,255,255,0.04); color: var(--glass-text); font-weight: 600; font-size: 1.05rem; }
-
-.professional-text.liquid-glass h2 {
-  margin: 0 0 0.6rem 0;
-  font-family: 'Inter', 'DM Sans', system-ui;
-  font-weight: 800;
-  font-size: clamp(1.6rem, 2.4vw + 1.2rem, 2.8rem); /* larger and more professional */
-  letter-spacing: -0.01em;
-}
-
-.professional-text.liquid-glass p {
+.timeline-content h4 {
   margin: 0;
-  font-size: clamp(1.15rem, 2.2vw, 1.35rem);
-  line-height: 1.8;
+  font-size: 1.15rem;
+  color: var(--glass-text);
+}
+.timeline-content span {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--glass-text-muted);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+.timeline-content p {
+  margin: 0;
+  font-size: 0.95rem !important;
+  line-height: 1.5 !important;
   color: var(--glass-text-muted);
 }
 
-.cta-button {
-  display: inline-block;
-  margin-top: 0.9rem;
-  padding: 0.9rem 1.5rem; /* larger tappable area */
-  border-radius: 14px;
-  background: linear-gradient(180deg, #4f46e5, #6366f1);
-  color: white;
-  font-weight: 800;
-  font-size: 1rem;
-  text-decoration: none; /* for Link element */
-  border: none;
-  box-shadow: 0 14px 40px rgba(79,70,229,0.18);
-  cursor: pointer;
-  transition: transform 180ms cubic-bezier(.2,.9,.3,1), box-shadow 180ms ease, opacity 160ms ease;
+/* Services Grid in Home */
+.services-grid {
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: 1.25rem;
 }
-
-.glass-skills li span { background: rgba(0,0,0,0.03); padding: 0.28rem 0.6rem; border-radius: 10px; border: 1px solid rgba(0,0,0,0.06); color: var(--glass-text); font-weight: 600; }
+.service-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 1.25rem;
+  border-radius: 16px;
+  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+.service-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+[data-theme="light"] .service-card {
+  background: rgba(0, 0, 0, 0.02);
+  border-color: rgba(0, 0, 0, 0.05);
+}
+[data-theme="light"] .service-card:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+.service-card h3 {
+  font-size: 1.15rem !important;
+  margin-bottom: 0.5rem !important;
+  color: var(--glass-text) !important;
+}
+.service-card p {
+  font-size: 0.95rem !important;
+  line-height: 1.5 !important;
+  margin: 0 !important;
+}
 
 .cta-button:hover {
   transform: translateY(-5px) scale(1.02);
@@ -427,24 +432,23 @@ font-weight: 500;
   outline-offset: 3px;
 }
 
+/* Mobile structural spacing adjustments */
 @media (max-width: 768px) {
-  .professional-text.liquid-glass {
-    width: calc(100% - 2rem);
-    height: auto;
-    padding: 1rem;
-    border-radius: 12px;
+  .marquee-container {
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    padding: 2rem 0;
   }
-
-  .professional-text.liquid-glass.is-expanded {
-    width: calc(100% - 2rem);
-    height: auto;
+  .testimonials-section {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
   }
-
-  .professional-text.liquid-glass h2 { text-align: center; }
-  .professional-text.liquid-glass p { text-align: left; }
-  .cta-button { display: block; margin: 0.8rem auto 0 auto; width: min(220px, 84%); }
+  .section-title {
+    margin-bottom: 1.5rem;
+    font-size: 1.6rem;
+  }
+  .container {
+    margin-top: 0;
+  }
 }
-
-@media (prefers-reduced-motion: reduce) {
-  .professional-text.liquid-glass, .professional-text.liquid-glass * { transition: none !important; animation: none !important; }
-}
+

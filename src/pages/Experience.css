@@ -83,7 +83,7 @@
   .home-split {
     position: static;
     display: block;
-    margin: calc(var(--header-height) + 8px) 1rem 0 1rem;
+    margin: 1rem 1rem 0 1rem;
     /* professional, responsive type */
     font-family: 'Inter', 'DM Sans', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
     /* smaller, tighter on phones */
@@ -142,7 +142,7 @@
 @media (max-width: 420px) {
   .home-split {
     font-size: clamp(0.95rem, 7.5vw, 1.2rem);
-    margin: calc(var(--header-height) + 6px) 0.75rem 0 0.75rem;
+    margin: 0.5rem 0.75rem 0 0.75rem;
     text-align: center;
   }
 
@@ -178,7 +178,7 @@
   gap: 20px;
   width: 100%;
   max-width: 1200px;
-  margin-top: calc(var(--header-height, 72px) + 0.9rem); /* push content down under the fixed header */
+  margin-top: 1rem;
 } 
 
 /* Ensure text column doesn't get pushed by visual transforms */
@@ -198,7 +198,7 @@
   .container {
     flex-direction: column-reverse; /* image below text on small screens */
     align-items: center;
-    margin-top: calc(var(--header-height, 64px) + 0.5rem); /* smaller offset on mobile */
+    margin-top: 0.5rem;
   }
 
   .container .text-col,
@@ -212,128 +212,7 @@
   }
 }
 
-/* Professional text block styles + Liquid Glass */
-.professional-text.liquid-glass {
-  --glass-size-w: 270px;
-  --glass-size-h: 270px;
-  --glass-padding: 30px;
-  --border-radius: 32px;
-  --transition: 0.4s cubic-bezier(0.5, 1.5, 0.5, 1);
-
-  /* Use stronger, dark text on top of light/white backgrounds for legibility */
-  --glass-text: #111827; /* gray-900 */
-  --glass-text-muted: #061222; /* gray-600 */
-
-  max-width: none;
-  margin: 2.25rem auto;
-  padding: var(--glass-padding);
-  border-radius: var(--border-radius);
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  border: 1px solid rgba(255,255,255,0.04);
-  box-shadow: 0 10px 30px rgba(2,6,23,0.12);
-  color: var(--glass-text);
-font-weight: 500;
-  width: var(--glass-size-w);
-  height: var(--glass-size-h);
-  position: relative;
-  cursor: grab;
-  transition: width var(--transition), height var(--transition), padding var(--transition);
-  overflow: hidden;
-  /* Keep the glass below the header while scrolling */
-  z-index: 0;
-} 
-
-.professional-text.liquid-glass.is-expanded {
-  --glass-size-w: 820px; /* keep width the same */
-  --glass-size-h: 520px; /* reduced height to balance top/bottom spacing */
-  --glass-padding: 48px;
-  box-shadow: 0 20px 70px rgba(2,6,23,0.18);
-  /* Let the glass flow in document layout (no absolute top offset) so the header remains on top */
-  top: auto;
-  z-index: 0;
-}
-
-/* Subtle entrance animations for the content */
-@keyframes fadeUpSmall {
-  from { opacity: 0; transform: translateY(8px) scale(.995); }
-  to   { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-@keyframes glassBend {
-  from { transform: translateY(6px); opacity: .9; }
-  to { transform: translateY(0); opacity: 1; }
-}
-
-.professional-text.liquid-glass.is-expanded .liquid-glass--bend {
-  animation: glassBend 700ms cubic-bezier(.22,.9,.3,1) both;
-}
-
-.liquid-glass__content > * {
-  opacity: 0;
-  transform: translateY(8px) scale(.995);
-  animation: fadeUpSmall 520ms cubic-bezier(.22,.9,.3,1) both;
-}
-
-.liquid-glass__content > *:nth-child(1) { animation-delay: 40ms; }
-.liquid-glass__content > *:nth-child(2) { animation-delay: 120ms; }
-.liquid-glass__content > *:nth-child(3) { animation-delay: 200ms; }
-.liquid-glass__content > *:nth-child(4) { animation-delay: 280ms; }
-.liquid-glass__content > *:nth-child(5) { animation-delay: 360ms; }
-.liquid-glass__content > *:nth-child(6) { animation-delay: 440ms; }
-
-/* Skill chips */
-.glass-skills {
-  list-style: none;
-  padding: 0;
-  margin: 0.5rem 0 0 0;
-  display: flex;
-  gap: 0.6rem;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-.glass-skills li { display: flex; gap: 0.5rem; align-items: center; font-size: 1.1rem; color: var(--text-muted); }
-.glass-skills li span { background: rgba(255,255,255,0.03); padding: 0.35rem 0.75rem; border-radius: 10px; border: 1px solid rgba(255,255,255,0.04); color: var(--text-color); font-weight: 600; font-size: 1.05rem; }
-
-@media (prefers-reduced-motion: reduce) {
-  .liquid-glass__content > * { animation: none !important; transform: none !important; opacity: 1 !important; }
-} 
-
-.liquid-glass--bend {
-  backdrop-filter: blur(3px);
-  border-radius: var(--border-radius);
-  filter: url(#glass-blur);
-  inset: 0;
-  position: absolute;
-  z-index: 0;
-}
-
-.liquid-glass--face {
-  border-radius: var(--border-radius);
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.15), 0 0 12px rgba(0, 0, 0, 0.08);
-  inset: 0;
-  position: absolute;
-  z-index: 1;
-}
-
-.liquid-glass--edge {
-  border-radius: var(--border-radius);
-  box-shadow: inset 3px 3px 3px 0 rgba(255, 255, 255, 0.45), inset -3px -3px 3px 0 rgba(255, 255, 255, 0.45);
-  inset: 0;
-  position: absolute;
-  z-index: 2;
-}
-
-.liquid-glass__content {
-  position: relative;
-  z-index: 3;
-  height: 100%;
-  overflow: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* vertically center inner content */
-  gap: 0.6rem;
-}
+/* Removed liquid-glass styles - now in global liquid-glass.css */
 
 /* Add padding inside the glass content so inner elements have even spacing */
 .liquid-glass__content {
@@ -341,118 +220,6 @@ font-weight: 500;
   box-sizing: border-box;
 }
 
-.professional-text.liquid-glass .highlight {
-  background: linear-gradient(90deg, rgba(255,230,128,0.08), rgba(125,190,255,0.06));
-  padding: 0.08rem 0.35rem;
-  border-radius: 6px;
-  color: var(--text-color);
-  font-weight: 600;
-}
-
-/* Theme-aware text colors for the liquid glass content 🔧 */
-/* Day mode uses darker text; Dark mode uses lighter text for legibility */
-[data-theme="light"] .professional-text.liquid-glass {
-  /* Use a stronger, near-black text color for day mode */
-  --glass-text: var(--text-day);
-  /* Keep muted text readable in day mode (dark gray with decent contrast) */
-  --glass-text-muted: rgba(15, 23, 42, 0.86); /* dark slate */
-}
-
-[data-theme="dark"] .professional-text.liquid-glass {
-  --glass-text: var(--text-night);
-  --glass-text-muted: var(--text-muted-night);
-}
-
-/* Ensure the content explicitly inherits the glass text color and transitions smoothly */
-.professional-text.liquid-glass .liquid-glass__content {
-  color: var(--glass-text);
-  transition: color 220ms ease;
-}
-
-/* Make headings and paragraphs explicitly honor the glass text colors */
-.professional-text.liquid-glass h2,
-.professional-text.liquid-glass p {
-  color: var(--glass-text);
-}
-
-
-/* Make skill chips match the glass text color (keeps visual consistency) */
-.glass-skills li span { background: rgba(255,255,255,0.03); padding: 0.35rem 0.75rem; border-radius: 10px; border: 1px solid rgba(255,255,255,0.04); color: var(--glass-text); font-weight: 600; font-size: 1.05rem; }
-
-.professional-text.liquid-glass h2 {
-  margin: 0 0 0.6rem 0;
-  font-family: 'Inter', 'DM Sans', system-ui;
-  font-weight: 800;
-  font-size: clamp(1.6rem, 2.4vw + 1.2rem, 2.8rem); /* larger and more professional */
-  letter-spacing: -0.01em;
-}
-
-.professional-text.liquid-glass p {
-  margin: 0;
-  font-size: clamp(1.15rem, 2.2vw, 1.35rem);
-  line-height: 1.8;
-  color: var(--glass-text-muted);
-}
-
-.cta-button {
-  display: inline-block;
-  margin-top: 0.9rem;
-  padding: 0.9rem 1.5rem; /* larger tappable area */
-  border-radius: 14px;
-  background: linear-gradient(180deg, #4f46e5, #6366f1);
-  color: white;
-  font-weight: 800;
-  font-size: 1rem;
-  text-decoration: none; /* for Link element */
-  border: none;
-  box-shadow: 0 14px 40px rgba(79,70,229,0.18);
-  cursor: pointer;
-  transition: transform 180ms cubic-bezier(.2,.9,.3,1), box-shadow 180ms ease, opacity 160ms ease;
-}
-
-.glass-skills li span { background: rgba(0,0,0,0.03); padding: 0.28rem 0.6rem; border-radius: 10px; border: 1px solid rgba(0,0,0,0.06); color: var(--glass-text); font-weight: 600; }
-
-.cta-button:hover {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 22px 60px rgba(79,70,229,0.20);
-}
-
-.cta-button:focus {
-  outline: 3px solid rgba(99,102,241,0.22);
-  outline-offset: 4px;
-}
-
-.cta-button:hover {
-  transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 18px 40px rgba(79,70,229,0.18);
-}
-
-.cta-button:focus {
-  outline: 3px solid rgba(99,102,241,0.18);
-  outline-offset: 3px;
-}
-
-@media (max-width: 768px) {
-  .professional-text.liquid-glass {
-    width: calc(100% - 2rem);
-    height: auto;
-    padding: 1rem;
-    border-radius: 12px;
-  }
-
-  .professional-text.liquid-glass.is-expanded {
-    width: calc(100% - 2rem);
-    height: auto;
-  }
-
-  .professional-text.liquid-glass h2 { text-align: center; }
-  .professional-text.liquid-glass p { text-align: left; }
-  .cta-button { display: block; margin: 0.8rem auto 0 auto; width: min(220px, 84%); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .professional-text.liquid-glass, .professional-text.liquid-glass * { transition: none !important; animation: none !important; }
-}
 
 /* Skills grid and progress bars for Experience section (glassmorphism) */
 .skills-wrapper {
@@ -464,7 +231,7 @@ font-weight: 500;
 
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
   gap: 1rem;
   align-items: start;
 }

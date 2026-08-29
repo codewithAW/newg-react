@@ -63,8 +63,8 @@ function Navigation() {
           className={`switcher__option ${activeIndex === item.option ? 'active' : ''}`}
           onClick={() => handleClick(item.option, index)}
         >
-          <Link to={item.path} title={item.label}>
-            <span className="switcher__icon">{item.icon}</span>
+          <Link to={item.path} title={item.label} aria-label={item.label}>
+            <span className="switcher__icon" aria-hidden="true">{item.icon}</span>
           </Link>
         </label>
       ))}

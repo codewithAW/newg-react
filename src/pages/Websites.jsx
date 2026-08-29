@@ -4,7 +4,7 @@ import { gsap } from 'gsap'
 import SplitText from '../components/SplitText/SplitText'
 import TextType from '../components/TextType/TextType'
 import './website.css'
-import image from '../assets/images/ing.png'
+import image from '../assets/images/ing.webp'
 import ProfileCard from '../components/ProfileCard/ProfileCard'
 import { Link } from 'react-router-dom'
 
@@ -125,43 +125,72 @@ function Websites() {
   <div className="liquid-glass--face" />
   <div className="liquid-glass--edge" />
   <div className="liquid-glass__content">
-    <h2>Welcome to My Portfolio</h2>
-    <p>
-      I am a dedicated and highly skilled <strong>software developer</strong> with expertise in 
-      <span className="highlight"> front-end technologies </span> and a passion for creating 
-      intuitive, user-friendly web applications. My work is driven by a commitment to excellence 
-      and continuous learning in the ever-evolving tech landscape.
-    </p>
-    <p>
-      Over the years, I have gained hands-on experience with a variety of frameworks and libraries, 
-      including <strong>React, TypeScript, and Node.js</strong>. I have also honed my skills in UI/UX 
-      design, focusing on delivering visually appealing, functional, and responsive web interfaces.
-    </p>
-    <p>
-      My goal is to collaborate on innovative projects that push the boundaries of what’s possible, 
-      delivering high-quality solutions that make a real impact. Feel free to explore my work, 
-      and let's connect to discuss how I can contribute to your next big project!
-    </p>
-    <p>
-      I design and build scalable front‑end architectures and component libraries, with a strong focus on 
-      accessibility and performance. Recent work includes performance optimisation of complex UI, creating
-      reusable design systems, and crafting refined motion using GSAP to elevate user experiences.
-    </p>
+    <h2 style={{ marginBottom: '2rem' }}>Featured Projects</h2>
+      
+      <div className="projects-grid">
+        <div className="project-card">
+          <div className="project-content">
+            <h3>E-Commerce Dashboard</h3>
+            <p>A full-stack admin dashboard for managing products, orders, and analytics with real-time updates.</p>
+            <div className="project-tags">
+              <span>React</span>
+              <span>Node.js</span>
+              <span>MongoDB</span>
+            </div>
+            <div className="project-links">
+              <a href="#" className="project-link" aria-label="View live site">Live Demo</a>
+              <a href="#" className="project-link outline" aria-label="View source code">GitHub</a>
+            </div>
+          </div>
+        </div>
 
-    <ul className="glass-skills">
-      <li><strong>Skills:</strong>
-        <span>React</span>
-        <span>TypeScript</span>
-        <span>CSS</span>
-        <span>Accessibility</span>
-      </li>
-      <li><strong>Tools:</strong>
-        <span>Vite</span>
-        <span>Storybook</span>
-        <span>ESLint</span>
-      </li>
-    </ul>
-    <Link to="/contact" className="cta-button" aria-label="Go to contact page">Get In Touch</Link>
+        <div className="project-card">
+          <div className="project-content">
+            <h3>Task Manager Pro</h3>
+            <p>A collaborative project management tool featuring drag-and-drop kanban boards and team chat.</p>
+            <div className="project-tags">
+              <span>TypeScript</span>
+              <span>Next.js</span>
+              <span>Tailwind</span>
+            </div>
+            <div className="project-links">
+              <a href="#" className="project-link" aria-label="View live site">Live Demo</a>
+              <a href="#" className="project-link outline" aria-label="View source code">GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <div className="project-card">
+          <div className="project-content">
+            <h3>AI Image Generator</h3>
+            <p>A web interface for generating and editing images using custom machine learning models and APIs.</p>
+            <div className="project-tags">
+              <span>React</span>
+              <span>Python</span>
+              <span>FastAPI</span>
+            </div>
+            <div className="project-links">
+              <a href="#" className="project-link" aria-label="View live site">Live Demo</a>
+              <a href="#" className="project-link outline" aria-label="View source code">GitHub</a>
+            </div>
+          </div>
+        </div>
+        
+        <div className="project-card">
+          <div className="project-content">
+            <h3>Portfolio Website</h3>
+            <p>The website you're looking at right now! Built with advanced GSAP animations and glassmorphism UI.</p>
+            <div className="project-tags">
+              <span>React</span>
+              <span>GSAP</span>
+              <span>CSS</span>
+            </div>
+            <div className="project-links">
+              <a href="#" className="project-link outline" aria-label="View source code">GitHub</a>
+            </div>
+          </div>
+        </div>
+      </div>
   </div>
 </div>
 

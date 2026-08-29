@@ -1,0 +1,125 @@
+.tech-orb-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 2rem 0;
+  perspective: 1000px; /* For 3D tilt effect */
+  /* Hidden by default on desktop, shown on mobile via media query */
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .tech-orb-wrapper {
+    display: flex;
+    margin: 1rem 0;
+  }
+}
+
+.tech-orb-sphere {
+  position: relative;
+  width: min(88vw, 420px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  --border-radius: 50%; /* Pass down to liquid-glass layers */
+  /* Match the container exactly */
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.04);
+  box-shadow: 0 20px 70px rgba(2,6,23,0.18);
+  overflow: hidden; /* Keep bubbles inside visually */
+  transform-style: preserve-3d;
+  will-change: transform;
+  touch-action: none; /* Prevent scrolling when interacting with the orb */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tech-orb-sphere .liquid-glass__content {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Prevent the liquid-glass fadeUp animation from overriding the JS physics transforms */
+.tech-orb-sphere .liquid-glass__content > * {
+  animation: none !important;
+}
+
+/* Atmospheric glow inside the orb */
+.tech-orb-atmosphere {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+  animation: orbPulse 8s ease-in-out infinite alternate;
+}
+
+@keyframes orbPulse {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(1.1); opacity: 1; }
+}
+
+.tech-orb-bubble {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Shinier gradient background */
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    inset -5px -5px 15px rgba(0, 0, 0, 0.4),
+    inset 5px 5px 15px rgba(255, 255, 255, 0.6),
+    0 10px 25px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: white;
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+  opacity: 0;
+  overflow: hidden;
+}
+
+/* Glossy specular highlight for the shiny glass look */
+.tech-orb-bubble::after {
+  content: '';
+  position: absolute;
+  top: 2%;
+  left: 10%;
+  width: 80%;
+  height: 40%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%);
+  border-radius: 50% 50% 10% 10% / 40% 40% 10% 10%;
+  pointer-events: none;
+}
+
+/* Subtle inner icon floating and shiny shadow */
+.tech-orb-bubble svg {
+  width: 50%;
+  height: 50%;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.4)) drop-shadow(0 -1px 2px rgba(255,255,255,0.4));
+  will-change: transform;
+  z-index: 2;
+}
+
+/* Waterdrops specifically */
+.waterdrop {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 100%);
+  box-shadow: 
+    inset -2px -2px 5px rgba(0, 0, 0, 0.3),
+    inset 2px 2px 8px rgba(255, 255, 255, 0.8),
+    0 5px 10px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.waterdrop::after {
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 100%);
+}

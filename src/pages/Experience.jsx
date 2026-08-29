@@ -4,7 +4,7 @@ import { gsap } from 'gsap'
 import SplitText from '../components/SplitText/SplitText'
 import TextType from '../components/TextType/TextType'
 import './Experience.css'
-import image from '../assets/images/ing.png'
+import image from '../assets/images/ing.webp'
 import ProfileCard from '../components/ProfileCard/ProfileCard'
 import { Link } from 'react-router-dom'
 
@@ -200,6 +200,27 @@ function Experience() {
               ))}
             </div>
           </div>
+
+          <h3 className="timeline-title" style={{ marginTop: '2.5rem' }}>Professional Experience</h3>
+          <div className="timeline-container">
+            <div className="timeline-item">
+              <div className="timeline-dot"></div>
+              <div className="timeline-content">
+                <h4>Frontend Engineer</h4>
+                <span>Tech Innovations Inc. &bull; Jan 2024 - Present</span>
+                <p>Leading the development of high-performance React applications, optimizing bundle sizes by 40%, and implementing accessible, responsive UI components using modern CSS features.</p>
+              </div>
+            </div>
+            <div className="timeline-item">
+              <div className="timeline-dot"></div>
+              <div className="timeline-content">
+                <h4>Web Designer & Developer</h4>
+                <span>Creative Digital Agency &bull; Mar 2023 - Dec 2023</span>
+                <p>Designed and built customized portfolios and e-commerce frontends. Collaborated closely with clients to transform their brands into engaging web experiences.</p>
+              </div>
+            </div>
+          </div>
+
   </div>
 </div>
 

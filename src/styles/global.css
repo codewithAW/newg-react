@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,100..1000&display=swap');
 @import url('https://unpkg.com/normalize.css') layer(normalize);
+@import './liquid-glass.css';
 
 @layer normalize, base, demo, toggle, transitions, debug, responsive;
 
@@ -11,13 +12,20 @@
   box-sizing: border-box;
 }
 
+/* Accessibility Focus States */
+:focus-visible {
+  outline: 2px solid rgba(79, 70, 229, 0.6);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
 /* ============================= */
 /* BACKGROUND IMAGE CONTROLLER   */
 /* ============================= */
 
 :root {
-  --bg-day: url("../assets/images/day.png");
-  --bg-night: url("../assets/images/dark.png");
+  --bg-day: url("../assets/images/day.webp");
+  --bg-night: url("../assets/images/dark.webp");
 
   /* DEFAULT = DAY */
   --bg-image: var(--bg-day);

@@ -4,7 +4,7 @@ import SplitText from '../components/SplitText/SplitText'
 import TextType from '../components/TextType/TextType'
 import ProfileCard from '../components/ProfileCard/ProfileCard'
 import './Home.css'
-import image from '../assets/images/ing.png'
+import image from '../assets/images/ing.webp'
 
 function About() {
   const handleAnimationComplete = () => {
@@ -140,6 +140,34 @@ function About() {
             considered, trustworthy results. I welcome conversations about meaningful projects and
             constructive collaboration.
           </p>
+
+          <h3 className="timeline-title">My Journey</h3>
+          <div className="timeline-container">
+            <div className="timeline-item">
+              <div className="timeline-dot"></div>
+              <div className="timeline-content">
+                <h4>Computer Science Degree</h4>
+                <span>University Placeholder &bull; 2021 - 2025</span>
+                <p>Focusing on software engineering, algorithms, and human-computer interaction.</p>
+              </div>
+            </div>
+            <div className="timeline-item">
+              <div className="timeline-dot"></div>
+              <div className="timeline-content">
+                <h4>Freelance Web Developer</h4>
+                <span>Self-Employed &bull; 2023 - Present</span>
+                <p>Designed and built custom React applications for small businesses, improving their digital presence.</p>
+              </div>
+            </div>
+            <div className="timeline-item">
+              <div className="timeline-dot"></div>
+              <div className="timeline-content">
+                <h4>First Open Source Contribution</h4>
+                <span>GitHub &bull; 2022</span>
+                <p>Started contributing to open-source libraries, gaining experience in collaborative development and version control.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 

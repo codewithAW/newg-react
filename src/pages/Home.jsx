@@ -1,11 +1,14 @@
 import React, { useEffect } from 'react'
 import { gsap } from 'gsap'
+import { FaReact, FaNodeJs, FaGithub, FaFigma } from 'react-icons/fa'
+import { SiTypescript, SiTailwindcss, SiMongodb, SiNextdotjs } from 'react-icons/si'
 
 import SplitText from '../components/SplitText/SplitText'
 import TextType from '../components/TextType/TextType'
 import './Home.css'
-import image from '../assets/images/ing.png'
+import image from '../assets/images/ing.webp'
 import ProfileCard from '../components/ProfileCard/ProfileCard'
+import TechOrb3D from '../components/TechOrb3D/TechOrb3D'
 import { Link } from 'react-router-dom'  
 
 function Home() {
@@ -123,32 +126,27 @@ function Home() {
         />
       </div>
       </div>
+      <TechOrb3D />
 <div className="professional-text liquid-glass is-expanded" aria-expanded="true">
   <div className="liquid-glass--bend" />
   <div className="liquid-glass--face" />
   <div className="liquid-glass--edge" />
   <div className="liquid-glass__content">
-    <h2>Welcome to My Portfolio</h2>
+    <h2>Engineering Premium Digital Experiences</h2>
     <p>
-      I am a dedicated and highly skilled <strong>software developer</strong> with expertise in 
-      <span className="highlight"> front-end technologies </span> and a passion for creating 
-      intuitive, user-friendly web applications. My work is driven by a commitment to excellence 
-      and continuous learning in the ever-evolving tech landscape.
+      I build <span className="highlight">scalable frontend architectures</span> and robust web applications 
+      that prioritize performance, accessibility, and exceptional user experience. I bridge the gap between 
+      meticulous design and complex engineering.
     </p>
     <p>
-      Over the years, I have gained hands-on experience with a variety of frameworks and libraries, 
-      including <strong>React, TypeScript, and Node.js</strong>. I have also honed my skills in UI/UX 
-      design, focusing on delivering visually appealing, functional, and responsive web interfaces.
+      Specializing in <strong>React, TypeScript, and modern JavaScript ecosystems</strong>, I deliver 
+      high-impact solutions ranging from performance-optimized complex UIs to reusable design systems 
+      and refined micro-interactions.
     </p>
     <p>
-      My goal is to collaborate on innovative projects that push the boundaries of what’s possible, 
-      delivering high-quality solutions that make a real impact. Feel free to explore my work, 
-      and let's connect to discuss how I can contribute to your next big project!
-    </p>
-    <p>
-      I design and build scalable front‑end architectures and component libraries, with a strong focus on 
-      accessibility and performance. Recent work includes performance optimisation of complex UI, creating
-      reusable design systems, and crafting refined motion using GSAP to elevate user experiences.
+      My approach is deliberate and detail-oriented. I believe that true engineering excellence 
+      means writing code that is not only functional but maintainable, accessible to all users, 
+      and inherently performant by default.
     </p>
 
     <ul className="glass-skills">
@@ -164,6 +162,22 @@ function Home() {
         <span>ESLint</span>
       </li>
     </ul>
+
+    <div className="services-grid">
+      <div className="service-card">
+        <h3>UI/UX Design</h3>
+        <p>Crafting beautiful, intuitive interfaces that prioritize user experience and aesthetic excellence.</p>
+      </div>
+      <div className="service-card">
+        <h3>Web Development</h3>
+        <p>Building robust, scalable frontend architectures using modern React and TypeScript ecosystems.</p>
+      </div>
+      <div className="service-card">
+        <h3>Performance Focus</h3>
+        <p>Optimizing web applications for maximum speed, accessibility, and smooth animations.</p>
+      </div>
+    </div>
+
     <Link to="/contact" className="cta-button" aria-label="Go to contact page">Get In Touch</Link>
   </div>
 </div>
@@ -175,6 +189,62 @@ function Home() {
   </filter>
 </svg>
 
+      {/* Marquee Section */}
+      <div className="marquee-container">
+        <div className="marquee-content">
+          <div className="marquee-item"><FaReact /> React</div>
+          <div className="marquee-item"><SiTypescript /> TypeScript</div>
+          <div className="marquee-item"><FaNodeJs /> Node.js</div>
+          <div className="marquee-item"><SiTailwindcss /> Tailwind</div>
+          <div className="marquee-item"><SiNextdotjs /> Next.js</div>
+          <div className="marquee-item"><SiMongodb /> MongoDB</div>
+          <div className="marquee-item"><FaFigma /> Figma</div>
+          <div className="marquee-item"><FaGithub /> GitHub</div>
+          {/* Duplicate for infinite effect */}
+          <div className="marquee-item"><FaReact /> React</div>
+          <div className="marquee-item"><SiTypescript /> TypeScript</div>
+          <div className="marquee-item"><FaNodeJs /> Node.js</div>
+          <div className="marquee-item"><SiTailwindcss /> Tailwind</div>
+          <div className="marquee-item"><SiNextdotjs /> Next.js</div>
+          <div className="marquee-item"><SiMongodb /> MongoDB</div>
+          <div className="marquee-item"><FaFigma /> Figma</div>
+          <div className="marquee-item"><FaGithub /> GitHub</div>
+        </div>
+      </div>
+
+      {/* Testimonials Section */}
+      <div className="testimonials-section">
+        <h2 className="section-title">What Clients Say</h2>
+        <div className="testimonials-grid">
+          <div className="testimonial-card">
+            <p className="testimonial-text">"Abdul transformed our outdated website into a modern, lightning-fast application. His attention to detail and design sense is unmatched!"</p>
+            <div className="testimonial-author">
+              <div className="author-info">
+                <h4>Habib Ullah</h4>
+                <span>CEO, TechStart</span>
+              </div>
+            </div>
+          </div>
+          <div className="testimonial-card">
+            <p className="testimonial-text">"An absolute pleasure to work with. He delivered our e-commerce dashboard ahead of schedule and the code quality was exceptional."</p>
+            <div className="testimonial-author">
+              <div className="author-info">
+                <h4>Muhammed Sheraz</h4>
+                <span>Product Manager</span>
+              </div>
+            </div>
+          </div>
+          <div className="testimonial-card">
+            <p className="testimonial-text">"The new animations and UI improvements increased our user engagement by 40%. Highly recommend for any complex frontend projects."</p>
+            <div className="testimonial-author">
+              <div className="author-info">
+                <h4>Farhadullah</h4>
+                <span>Design Lead</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
     </main>
   )

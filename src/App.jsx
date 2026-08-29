@@ -8,6 +8,7 @@ import About from './pages/About'
 import Experience from './pages/Experience'
 import Websites from './pages/Websites'
 import Contact from './pages/Contact'
+import NotFound from './pages/NotFound'
 import { ThemeProvider } from './hooks/useTheme'
 import './styles/global.css'
 
@@ -23,6 +24,7 @@ function App() {
           <Route path="/experience" element={<Experience />} />
           <Route path="/websites" element={<Websites />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
       </Router>

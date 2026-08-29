@@ -205,6 +205,15 @@
   cursor: pointer;
 }
 
+.switcher__option a {
+  color: var(--c);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
 .switcher__option:hover {
   --c: #0052f5;
   cursor: pointer;
@@ -221,6 +230,18 @@
 
 .switcher__option.active .switcher__icon {
   scale: 1;
+}
+
+[data-theme="dark"] .switcher__option {
+  --c: rgba(255, 255, 255, 0.85);
+}
+
+[data-theme="dark"] .switcher__option:hover {
+  --c: #7dbeff;
+}
+
+[data-theme="dark"] .switcher__option.active {
+  --c: #ffffff;
 }
 
 .switcher::after {
@@ -472,7 +493,7 @@
 
 @media (max-width: 768px) {
   .mobile-menu-btn {
-    display: flex !important;
+    display: none !important;
   }
 
   .switcher-container {
@@ -480,20 +501,81 @@
   }
 
   .glass-button {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    width: auto !important;
+    min-width: 0;
+    max-width: 100%;
+    padding: 5px;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+  .glass-button:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  .glass-left {
     display: none !important;
+  }
+  .glass-right {
+    display: flex !important;
+    position: relative !important;
+    right: auto !important;
+    top: auto !important;
+    transform: none !important;
   }
 
   .header-wrapper {
     min-height: var(--header-height);
   }
+
+  .switcher {
+    height: 55px;
+    max-width: 280px;
+    padding: 6px 8px;
+    gap: 4px;
+  }
+  .switcher__option {
+    width: 48px;
+  }
+  .liquid-toggle {
+    --width: 50;
+    --height: 28;
+    --border: 3px;
+  }
+}
+
+@media (max-width: 420px) {
+  .glass-button {
+    gap: 8px;
+  }
+  .switcher {
+    height: 48px;
+    max-width: 240px;
+    padding: 5px 6px;
+    gap: 2px;
+  }
+  .switcher__option {
+    width: 40px;
+  }
+  .switcher__icon {
+    scale: 0.85;
+  }
+  .liquid-toggle {
+    --width: 44;
+    --height: 25;
+    --border: 3px;
+  }
 }
 
 @media (max-width: 480px) {
   .mobile-menu-btn {
-    display: flex !important;
-    width: 45px;
-    height: 45px;
-    left: 15px;
+    display: none !important;
   }
 
   .mobile-menu-btn span {
