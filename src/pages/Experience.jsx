@@ -35,15 +35,18 @@ function Experience() {
         }
 
         if (Draggable && typeof Draggable.create === 'function') {
-          if (window.innerWidth > 768) {
-            draggable = Draggable.create(el, {
+          const mm = gsap.matchMedia();
+          mm.add("(min-width: 1025px)", () => {
+            const d = Draggable.create(el, {
               type: 'x,y',
               inertia: true,
               onRelease: function () {
                 gsap.to(this.target, { x: 0, y: 0, duration: 1.5, ease: 'elastic.out(1,0.3)' });
               }
             });
-          }
+            return () => { if (d && d[0]) d[0].kill(); };
+          });
+          draggable = [ { kill: () => mm.revert() } ];
         }
       } catch (err) {
         // Plugin(s) not available; keep app running without draggable
